@@ -24,8 +24,8 @@ let user_id = '';
 // Creating the bot with access token, name and avatar
 const bot = new ViberBot({
     authToken: process.env.AUTH_TOKEN, // <--- Paste your token here
-    name: "Viber Bot",  // <--- Your bot name here
-    avatar: "http://api.adorable.io/avatar/200/isitup" // It is recommended to be 720x720, and no more than 100kb.
+    name: "Tailor Bot",  // <--- Your bot name here
+    avatar: "D:\B.Sc(Hons) Course Work and Project\B.ScProject 2020\logo.jpg" // It is recommended to be 720x720, and no more than 100kb.
 });
 
 app.use("/viber/webhook", bot.middleware());
@@ -64,7 +64,7 @@ app.post('/test',function(req,res){
        "receiver":user_id,
        "min_api_version":1,
        "sender":{
-          "name":"Viber Bot",
+          "name":"Tailor Bot",
           "avatar":"http://avatar.example.com"
        },
        "tracking_data":"tracking data",
@@ -123,14 +123,7 @@ bot.onSubscribe(response => {
 
 
 
-bot.onTextMessage(/^hi|hello$/i, (message, response) =>
-    response.send(new TextMessage(`Hi there ${response.userProfile.name}. I am robot`)));
-
-bot.onTextMessage(/^mingalarbar$/i, (message, response) =>
-    response.send(new TextMessage(`Mingalarbar. Welcome to MCC`)));
-
-
-bot.onTextMessage(/^Mingalarbar$/i, (message, response) =>
+bot.onTextMessage(/^Mingalarbar|hi|hello$/i, (message, response) =>
     response.send(new TextMessage(`Mingalarbar. Welcome to Tailor Bot! What can I help u?`)));
 
 
