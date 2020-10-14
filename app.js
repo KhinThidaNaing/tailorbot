@@ -123,8 +123,15 @@ bot.onSubscribe(response => {
 
 
 
-bot.onTextMessage(/^Mingalarbar|hi|hello$/i, (message, response) =>
-    response.send(new TextMessage(`Mingalarbar.${response.userProfile.name}. I am Tailor Bot! What can I help u?`)));
+bot.onTextMessage(/^hi|hello$/i, (message, response) =>
+    response.send(new TextMessage(`Hi there ${response.userProfile.name}. I am robot`)));
+
+bot.onTextMessage(/^mingalarbar$/i, (message, response) =>
+    response.send(new TextMessage(`Mingalarbar. Welcome to MCC`)));
+
+
+bot.onTextMessage(/^Mingalarbar$/i, (message, response) =>
+    response.send(new TextMessage(`Mingalarbar. Welcome to Tailor Bot! What can I help u?`)));
 
 
 bot.onTextMessage(/./, (message, response) => {
