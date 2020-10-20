@@ -65,9 +65,9 @@ let actionKeyboard = {
 
 // Creating the bot with access token, name and avatar
 const bot = new ViberBot({
-    authToken: process.env.AUTH_TOKEN, // <--- Paste your token here
-    name: "Viber Bot",  // <--- Your bot name here
-    avatar: "http://api.adorable.io/avatar/200/isitup" // It is recommended to be 720x720, and no more than 100kb.
+    authToken: process.env."4c4939aeae400a46-4fa5a3553eb550c5-93ef9f5b654ae372" AUTH_TOKEN, // <--- Paste your token here
+    name: "tailor bot",  // <--- Your bot name here
+    avatar: "https://www.google.com/search?q=cute+sew+machine+image&client=firefox-b-d&sxsrf=ALeKk03SBU44YCblCncNclNlvm3XIlhFLg:1602640275798&source=lnms&tbm=isch&sa=X&ved=2ahUKEwi_uN2i_LLsAhXJZSsKHXlECtEQ_AUoAXoECA0QAw&biw=1536&bih=750#imgrc=nzWi73wiQ9cDLM" // It is recommended to be 720x720, and no more than 100kb.
 });
 
 app.use("/viber/webhook", bot.middleware());
