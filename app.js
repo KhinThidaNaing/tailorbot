@@ -108,7 +108,7 @@ app.post('/register',function(req,res){
 
    
 
-    db.collection('users').add(data)
+    db.collection('customer').add(data)
     .then(()=>{
             let data = {
                    "receiver":currentUser.id,
@@ -136,8 +136,8 @@ app.post('/register',function(req,res){
        
 });
 
-app.get('/admin/merchants', async (req,res) => {
-    const usersRef = db.collection('users');
+app.get('/customer/v9C6dFD0i3OMDyICuGK1 ', async (req,res) => {
+    const usersRef = db.collection('customer');
     const snapshot = await usersRef.get();
     if (snapshot.empty) {
       console.log('No matching documents.');
@@ -148,9 +148,9 @@ app.get('/admin/merchants', async (req,res) => {
 
         let user = {};
         user.id = doc.id;
-        user.name = doc.data().name;
-        user.phone = doc.data().phone;         
-        user.address = doc.data().address;
+       customer.name = doc.data().name;
+        customer.phone = doc.data().phone;         
+
         data.push(user);        
     });   
  
