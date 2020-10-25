@@ -148,10 +148,13 @@ app.get('/customer/v9C6dFD0i3OMDyICuGK1 ', async (req,res) => {
 
         let user = {};
         user.id = doc.id;
-       customer.name = doc.data().name;
+        customer.name = doc.data().name;
         customer.phone = doc.data().phone;         
+        customer.date = doc.data().date;
+        customer.design type= doc.data().design type;
+        customer.special instruction= doc.data().special instruction;
 
-        data.push(user);        
+        data.push(customer);        
     });   
  
     res.render('merchants.ejs', {data:data}); 
@@ -498,7 +501,7 @@ let KEYBOARD_JSON = {
         }]
     };
 
-const message = new TextMessage("Welcome to my tea shop",KEYBOARD_JSON,null,null,null,3);
+const message = new TextMessage("Welcome to Tailor Bot",KEYBOARD_JSON,null,null,null,3);
 
 bot.onConversationStarted((userProfile, isSubscribed, context) =>     
     bot.sendMessage(userProfile,message)
