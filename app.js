@@ -496,12 +496,12 @@ let KEYBOARD_JSON = {
             "Rows": 1,
             "ActionType": "reply", // type of action
             "ActionBody": "register", // the value of the keyboard
-            "Text": "Choose Design", //this is text in keyboard
+            "Text": "Register", //this is text in keyboard
             "TextSize": "regular"
         }]
     };
 
-const message = new TextMessage("Welcome to Tailor Bot",KEYBOARD_JSON,null,null,null,3);
+const message = new TextMessage("Welcome to my tea shop",KEYBOARD_JSON,null,null,null,3);
 
 bot.onConversationStarted((userProfile, isSubscribed, context) =>     
     bot.sendMessage(userProfile,message)
@@ -683,7 +683,7 @@ const registerUser = async (message, response) => {
 
     if (snapshot.empty) {
         console.log('No such document!');
-        let bot_message1 = new TextMessage(`Click on following link to Choose Design`, ); 
+        let bot_message1 = new TextMessage(`Click on following link to register`, ); 
         let bot_message2 = new UrlMessage(APP_URL + '/register/');   
         response.send(bot_message1).then(()=>{
             return response.send(bot_message2);
@@ -798,8 +798,8 @@ const checkBalance = async (message, response) => {
 
     if (snapshot.empty) {
         console.log('No such document!');
-        let bot_message1 = new TextMessage(`Click on following link to choose design`, ); 
-        let bot_message2 = new UrlMessage(APP_URL + '/Choose Design/');   
+        let bot_message1 = new TextMessage(`Click on following link to register`, ); 
+        let bot_message2 = new UrlMessage(APP_URL + '/register/');   
         response.send(bot_message1).then(()=>{
             return response.send(bot_message2);
         });
