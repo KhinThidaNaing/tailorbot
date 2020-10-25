@@ -108,7 +108,7 @@ app.post('/register',function(req,res){
 
    
 
-    db.collection('customer').add(data)
+    db.collection('users').add(data)
     .then(()=>{
             let data = {
                    "receiver":currentUser.id,
@@ -136,8 +136,8 @@ app.post('/register',function(req,res){
        
 });
 
-app.get('/customer/v9C6dFD0i3OMDyICuGK1 ', async (req,res) => {
-    const usersRef = db.collection('customer');
+app.get('/admin/merchants', async (req,res) => {
+    const usersRef = db.collection('users');
     const snapshot = await usersRef.get();
     if (snapshot.empty) {
       console.log('No matching documents.');
@@ -148,13 +148,10 @@ app.get('/customer/v9C6dFD0i3OMDyICuGK1 ', async (req,res) => {
 
         let user = {};
         user.id = doc.id;
-        customer.name = doc.data().name;
-        customer.phone = doc.data().phone;         
-        customer.date = doc.data().date;
-        customer.design type= doc.data().design type;
-        customer.special instruction= doc.data().special instruction;
-
-        data.push(customer);        
+        user.name = doc.data().name;
+        user.phone = doc.data().phone;         
+        user.address = doc.data().address;
+        data.push(user);        
     });   
  
     res.render('merchants.ejs', {data:data}); 
