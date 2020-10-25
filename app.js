@@ -93,22 +93,27 @@ app.get('/register',function(req,res){
 });
 
 
+
+
 app.post('/register',function(req,res){   
     
     currentUser.name = req.body.name;
     currentUser.phone = req.body.phone;
     currentUser.address = req.body.address;
+    currentUser.design = req.body.design;
+    currentUser.specialinstruction = req.body.specialinstruction;
 
     let data = {
         viberid: currentUser.id,
         name: currentUser.name,
         phone: currentUser.phone,
-        address: currentUser.address
+        design: currentUser.design,
+        specialinstruction: currentUser.specialinstruction
     }
 
    
 
-    db.collection('users').add(data)
+    db.collection('customer').add(data)
     .then(()=>{
             let data = {
                    "receiver":currentUser.id,
@@ -136,8 +141,8 @@ app.post('/register',function(req,res){
        
 });
 
-app.get('/admin/merchants', async (req,res) => {
-    const usersRef = db.collection('users');
+app.get('/custotmer/37Jwl1AVUMopE6gBhEe9', async (req,res) => {
+    const usersRef = db.collection('customer');
     const snapshot = await usersRef.get();
     if (snapshot.empty) {
       console.log('No matching documents.');
@@ -150,11 +155,12 @@ app.get('/admin/merchants', async (req,res) => {
         user.id = doc.id;
         user.name = doc.data().name;
         user.phone = doc.data().phone;         
-        user.address = doc.data().address;
+        user.design = doc.data().design;
+        user.specialinstruction = doc.data().specialinstruction;
         data.push(user);        
     });   
  
-    res.render('merchants.ejs', {data:data}); 
+    res.render('customerinfo.ejs', {data:data}); 
     
 });
 
