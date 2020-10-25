@@ -798,8 +798,8 @@ const checkBalance = async (message, response) => {
 
     if (snapshot.empty) {
         console.log('No such document!');
-        let bot_message1 = new TextMessage(`Click on following link to register`, ); 
-        let bot_message2 = new UrlMessage(APP_URL + '/register/');   
+        let bot_message1 = new TextMessage(`Click on following link to choose design`, ); 
+        let bot_message2 = new UrlMessage(APP_URL + '/Choose Design/');   
         response.send(bot_message1).then(()=>{
             return response.send(bot_message2);
         });
