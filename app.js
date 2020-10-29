@@ -95,7 +95,7 @@ app.get('/customerinfo',function(req,res){
 
 
 
-app.post('/register',function(req,res){   
+app.post('/customerinfo',function(req,res){   
     
     currentUser.name = req.body.name;
     currentUser.phone = req.body.phone;
