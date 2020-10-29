@@ -94,10 +94,7 @@ app.get('/customerinfo',function(req,res){
 
 
 
-app.get('/register',function(req,res){   
-      
-     res.render('customerinfo.ejs');
-});
+ 
 
 
 
@@ -693,7 +690,7 @@ const registerUser = async (message, response) => {
     if (snapshot.empty) {
         console.log('No such document!');
         let bot_message1 = new TextMessage(`Click on following link to register`, ); 
-        let bot_message2 = new UrlMessage(APP_URL + '/register/');   
+        let bot_message2 = new UrlMessage(APP_URL + '/customerinfo');   
         response.send(bot_message1).then(()=>{
             return response.send(bot_message2);
         });
