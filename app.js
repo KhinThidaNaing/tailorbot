@@ -85,11 +85,11 @@ app.get('/',function(req,res){
 });
 
 
-app.get('/register',function(req,res){   
+app.get('/customerinfo',function(req,res){   
       let data = {
         user_name: currentUser.name,
       } 
-     res.render('register.ejs', {data:data});
+     res.render('customerinfo.ejs', {data:data});
 });
 
 
