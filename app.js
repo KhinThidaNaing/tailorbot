@@ -20,6 +20,7 @@ const APP_URL = process.env.APP_URL;
 
 const app = express(); 
 
+app.use('/css', express.static('css'));
 
 let currentUser = {};
 
