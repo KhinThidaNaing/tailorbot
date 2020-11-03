@@ -164,7 +164,7 @@ app.get('/custotmer/37Jwl1AVUMopE6gBhEe9', async (req,res) => {
         data.push(user);        
     });   
  
-    res.render('customerinfo.ejs', {data:data}); 
+    res.render('measurement.ejs', {data:data}); 
     
 });
 
