@@ -8,6 +8,7 @@
  </head>
 
   <body>
+  	 <form id="form" action="../measurement" method="post">
  
     <h1>Hello!! Fill Your Measurement Here </h1>
 	
@@ -64,7 +65,19 @@
 			
 		</table>
 		</div>
-		
+  <script>
+    
+  const windowClose = () => {
+    setTimeout(()=>{
+      window.close();
+    },2000);    
+  }
+
+      
+  document.getElementById("form").addEventListener("submit", windowClose); 
+	
+ 
+  </script>		
   </body>
 
 </html>
