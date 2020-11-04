@@ -101,7 +101,7 @@ app.post('/customerinfo',function(req,res){
 
    
 
-    db.collection('customer').add(data)
+    db.collection('customers').add(data)
     .then(()=>{
             let data = {
                    "receiver":currentUser.id,
@@ -765,7 +765,7 @@ const keyboardReply = (message, response) => {
 
 const registerUser = async (message, response) => {   
 
-    const userRef = db.collection('customer');    
+    const userRef = db.collection('customers');    
     const snapshot = await userRef.where('viberid', '==', currentUser.id).limit(1).get();
 
     if (snapshot.empty) {
