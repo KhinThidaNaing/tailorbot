@@ -2,64 +2,72 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-		<link href="style.css" rel="stylesheet" type="text/css" />
+	 
     <title>Measurement</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	
  </head>
 
   <body>
   	 <form id="form" action="../measurement" method="post">
  
-    <h1>Hello!! Fill Your Measurement Here </h1>
+    <h1>Hello!! Fill Your Body Measurement Here </h1>
 	
 		<div class ="info">
 		<table>
 			
 		
+                <tr>
+				   <td> <label for="name">Customer Name</label></td>
+				<td><input type="text" name="name" value="<%= data.name %>" disabled/>
+    			</tr>
+
 				<tr>
-					<td><label>Biceps (လက်မောင်းရင်း) </label>
-					 <input type="text" name ="bicep" id="nam" required></td></br>
+					<td><label for+ "name">Biceps (လက်မောင်းရင်း) </label> </td>
+					 <td><input type="text" name ="bicep" required></td>
+				</tr>
+				<tr>
+					<td><label for+ "name">Bust (ရင်)</label></td>
+					<td> <input type="text" name ="bust" required></td>
+				</tr>
+				
+				<tr>
+					<td><label for+ "name">Central Back (နောက်ကျော) </label></td>
+					<td> <input type="text" name ="central_back" required></td>
+				</tr>
+				
+				<tr>
+					<td><label for+ "name">Hip (တင်) </label> </td>
+					<td> <input type="text" name ="hip" required></td>
+				</tr>
+				<tr>
+					<td><label for+ "name">Shoulder (ပခုံး) </label></td>
+					<td> <input type="text" name ="shoulder" required></td>
+				</tr>
+				
+				<tr>
+					<td><label for+ "name">Sleeve (လက်အရှည်)</label> </td>
+					<td> <input type="text" name ="sleeve" required></td>
+				</tr>
+				
+				<tr>
+					<td><label for+ "name">Waist (ခါး)</label> </td>
+					<td> <input type="text" name ="waist" required></td>
+				</tr>
+				
+				<tr>
+					<td><label for+ "name">Waist to Ankle (ခါးမှခြေထောက်)</label> </td>
+					<td> <input type="text" name ="waist_to_ankle" required></td>
 				</tr>
 
 				<tr>
-					<td><label>Bust (ရင်)</label>
-					<input type="phno" name ="bust" id="bustt"  required> </td>
-				</tr>
+					<td><label for="name">Comment</label></td>
+    				<td><textarea name="comment" rows="4" cols="50"></textarea></td>
+    			</tr>
 				
 				<tr>
-					<td><label>Central Back (နောက်ကျော)</label>
-					<input type="text" name ="centralb" id="cback"  required> </td>
-				</tr>
-				 <input type="text" name="item_batch"/><br>
-
-				
-				<tr>
-					<td><label> Hip (တင်)</label>
-					<input type="text" name ="hip" id="hipp" required> </td>
-				</tr>
-				
-				<tr>
-					<td><label>Shoulder (ပခုံး)</label>
-					<input type="text" name ="shoulder" id="shoulderr"  required> </td>
-				</tr>
-				
-					<tr>
-					<td><label>Sleeve (လက်အရှည်)</label>
-					<input type="text" name ="sleeve" id="sleevee"  required> </td>
-				</tr>
-				
-					<tr>
-					<td><label>Waist (ခါး)</label>
-					<input type="text" name ="waist" id="waistt"  required> </td>
-				</tr>
-				
-					<tr>
-					<td><label>Waist to Ankle (ခါးမှခြေထောက်)</label>
-					<input type="text" name ="waistA" id="wAnkle"  required> </td>
-				</tr>
-				
-				<tr><td><input type="submit" name ="Submit" id="subm" value="submit" />
-				<input type="reset" name ="cancel" id="canc" value="Cancel" /></td>
+				<td><input type="submit" name ="Submit" id="subm" value="submit" /></td>
+				<td><input type="reset" name ="cancel" value="Cancel" /></td>
 				</tr>
 				
 			
