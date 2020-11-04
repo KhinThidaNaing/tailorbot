@@ -914,8 +914,10 @@ if (snapshot.empty) {
             return response.send(bot_message2);
         });
 }else{
-  currentUser.name = doc.data().name;
-  currentUser.phone = doc.data().phone;
+    snapshot.forEach(doc => {
+            currentUser.name = doc.data().name;
+             currentUser.phone = doc.data().phone;           
+        });
   let bot_message = new TextMessage(`Please select your activity in keyboard menu`, actionKeyboard);    
     response.send(bot_message);
 
