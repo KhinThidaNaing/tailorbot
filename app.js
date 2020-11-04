@@ -257,7 +257,7 @@ app.post('/order',function(req,res){
  
    
 
-    db.collection('measurements').add(data)
+    db.collection('orders').add(data)
     .then(()=>{
             let data = {
                    "receiver":currentUser.id,
