@@ -170,6 +170,98 @@ app.get('/custotmer/37Jwl1AVUMopE6gBhEe9', async (req,res) => {
 
 
 
+app.get('/measurement',function(req,res){   
+      let data = {
+        user_name: currentUser.name,
+      } 
+     res.render('measurement.ejs', {data:data});
+});
+
+
+app.post('/measurement',function(req,res){   
+    
+    currentUser.name = req.body.bicep;
+    currentUser.phone = req.body.bust;
+    currentUser.address = req.body.central_back;
+    currentUser.hip = req.body.hip;
+    currentUser.shoulder = req.body.shoulder;
+    currentUser.sleeve = req.body.sleeve;
+    currentUser.waist = req.body.waist;
+    currentUser.waist_to_ankle = req.body.waist_to_ankle;
+    currentUser.comment = req.body.comment;
+
+    let data = {
+        viberid: currentUser.id,
+        bicep: currentUser.bicep,
+        bust: currentUser.bust,
+        central_back: currentUser.design,
+        hip: currentUser.hip,
+        shoulder:currentUser.shoulder,
+        sleeve:currentUser.sleeve,
+        waist:currentUser.waist,
+        waist_to_ankle:currentUser.waist_to_ankle,
+        comment:currentUser.comment
+    }
+
+   
+
+    db.collection('customer').add(data)
+    .then(()=>{
+            let data = {
+                   "receiver":currentUser.id,
+                   "min_api_version":1,
+                   "sender":{
+                      "name":"Viber Bot",
+                      "avatar":"http://avatar.example.com"
+                   },
+                   "tracking_data":"tracking data",
+                   "type":"text",
+                   "text": "Thank you!"+req.body.name
+                }                
+
+                fetch('https://chatapi.viber.com/pa/send_message', {
+                    method: 'post',
+                    body:    JSON.stringify(data),
+                    headers: { 'Content-Type': 'application/json', 'X-Viber-Auth-Token': process.env.AUTH_TOKEN },
+                })
+                .then(res => res.json())
+                .then(json => console.log('JSON', json))
+
+    }).catch((error)=>{
+        console.log('ERROR:', error);
+    });
+       
+});
+
+app.get('/custotmer', async (req,res) => {
+    const usersRef = db.collection('customer');
+    const snapshot = await usersRef.get();
+    if (snapshot.empty) {
+      console.log('No matching documents.');
+      return;
+    }  
+    let data = [];
+    snapshot.forEach(doc => {
+
+        let user = {};
+        user.id = doc.id;
+        user.bicep = doc.data().name;
+        user.bust = doc.data().bust;         
+        user.central_back = doc.data().central_back;
+        user.hip = doc.data().hip;
+        user.shoulder = doc.data().shoulder;
+        user.Sleeve = doc.data().Sleeve;
+        user.waist = doc.data().waist;
+        user.waist_to_ankle = doc.data().waist_to_ankle;
+        user.comment=doc.data().comment;
+        data.push(user);        
+    });   
+ 
+    res.render('measurement.ejs', {data:data}); 
+    
+});
+
+
 app.get('/admin/addstock/:merchant_id', async (req,res) => {  
     let data = { };        
 
