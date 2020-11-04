@@ -636,7 +636,7 @@ bot.onTextMessage(/./, (message, response) => {
             registerUser(message, response);
             break;
         case "my-stock":
-            measurement(message, response);
+            checkStock(message, response);
             break;
         case "my-balance":
             checkBalance(message, response);
@@ -842,8 +842,8 @@ const measurement = async (message, response) => {
 
     if (snapshot.empty) {
         console.log('No such document!');
-        let bot_message1 = new TextMessage(`Click on following link to register`, ); 
-        let bot_message2 = new UrlMessage(APP_URL + '/register/');   
+        let bot_message1 = new TextMessage(`Click on following link to fill your measurement`, ); 
+        let bot_message2 = new UrlMessage(APP_URL + '/measurement/');   
         response.send(bot_message1).then(()=>{
             return response.send(bot_message2);
         });
