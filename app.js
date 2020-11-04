@@ -156,7 +156,7 @@ app.get('/custotmer/37Jwl1AVUMopE6gBhEe9', async (req,res) => {
 
 app.get('/measurement',function(req,res){   
       let data = {
-        user_name: currentUser.name,
+        name: currentUser.name,
       } 
      res.render('measurement.ejs', {data:data});
 });
