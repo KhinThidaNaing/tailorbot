@@ -776,6 +776,11 @@ const registerUser = async (message, response) => {
             return response.send(bot_message2);
         });
     }else{
+
+        snapshot.forEach(doc => {
+            currentUser.name = doc.data().name;
+             currentUser.phone = doc.data().phone;           
+        });
         
           let actionKeyboard = {
             "Type": "keyboard",
@@ -899,8 +904,24 @@ const checkBalance = async (message, response) => {
 
 const showMenu = (message, response) => {
 
-    let bot_message = new TextMessage(`Please select your activity in keyboard menu`, actionKeyboard);    
+const userRef = db.collection('customers');   
+const snapshot = await userRef.where('viberid', '==', currentUser.id).limit(1).get();
+if (snapshot.empty) {
+   let bot_message1 = new TextMessage(`Click on following link to fill Your Information`, ); 
+    let bot_message2 = new UrlMessage(APP_URL + '/customerinfo');    
+    response.send(bot_message1).then(()=>{
+            return response.send(bot_message2);
+        });
+}else{
+  currentUser.name = doc.data().name;
+  currentUser.phone = doc.data().phone;
+  let bot_message = new TextMessage(`Please select your activity in keyboard menu`, actionKeyboard);    
     response.send(bot_message);
+
+}
+
+
+    
 }
 
 
