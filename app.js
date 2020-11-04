@@ -164,9 +164,9 @@ app.get('/measurement',function(req,res){
 
 app.post('/measurement',function(req,res){   
     
-    currentUser.name = req.body.bicep;
-    currentUser.phone = req.body.bust;
-    currentUser.address = req.body.central_back;
+    currentUser.bicep= req.body.bicep;
+    currentUser.bust = req.body.bust;
+    currentUser.central_back = req.body.central_back;
     currentUser.hip = req.body.hip;
     currentUser.shoulder = req.body.shoulder;
     currentUser.sleeve = req.body.sleeve;
@@ -176,6 +176,7 @@ app.post('/measurement',function(req,res){
 
     let data = {
         viberid: currentUser.id,
+        name:currentUser.name,
         bicep: currentUser.bicep,
         bust: currentUser.bust,
         central_back: currentUser.design,
@@ -189,7 +190,7 @@ app.post('/measurement',function(req,res){
 
    
 
-    db.collection('customer').add(data)
+    db.collection('measurements').add(data)
     .then(()=>{
             let data = {
                    "receiver":currentUser.id,
@@ -200,7 +201,7 @@ app.post('/measurement',function(req,res){
                    },
                    "tracking_data":"tracking data",
                    "type":"text",
-                   "text": "Thank you!"+req.body.name
+                   "text": "Thank you!"+currentUser.name,
                 }                
 
                 fetch('https://chatapi.viber.com/pa/send_message', {
