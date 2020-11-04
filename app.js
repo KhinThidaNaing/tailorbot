@@ -306,6 +306,7 @@ app.post('/admin/addstock/', async (req,res) => {
 });
 
 
+
 app.get('/admin/stocklist/:merchant_id', async (req,res) => { 
     
 
@@ -635,7 +636,7 @@ bot.onTextMessage(/./, (message, response) => {
             registerUser(message, response);
             break;
         case "my-stock":
-            checkStock(message, response);
+            measurement(message, response);
             break;
         case "my-balance":
             checkBalance(message, response);
@@ -782,7 +783,7 @@ const registerUser = async (message, response) => {
 
     if (snapshot.empty) {
         console.log('No such document!');
-        let bot_message1 = new TextMessage(`Click on following link to register`, ); 
+        let bot_message1 = new TextMessage(`Click on following link to fill Your Information`, ); 
         let bot_message2 = new UrlMessage(APP_URL + '/customerinfo');   
         response.send(bot_message1).then(()=>{
             return response.send(bot_message2);
@@ -832,7 +833,7 @@ const registerUser = async (message, response) => {
   
 }
 
-const checkStock = async (message, response) => {
+const measurement = async (message, response) => {
 
     let user_id = '';
 
