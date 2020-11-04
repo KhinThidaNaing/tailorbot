@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+	 
+    <title>Order Progress</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+ </head>
+
+  <body>
+  	 <form id="form" action="../measurement" method="post">
+ 
+    <h1>Hello ! Your Order Progress is Here</h1>
+	
+		<div class ="info">
+		<table>
+			
+		
+                <tr>
+				   <td> <label for="name">Customer Name</label></td>
+				<td><input type=" " name="name" value="<%= data.name %>" disabled/>
+    			</tr>
+
+				<tr>
+					<td><label for= "name">Prepare </label> </td>
+					 <td><input type="  name ="prepare" ></td>
+				</tr>
+				<tr>
+					<td><label for="name">Decorate</label></td>
+					<td> <input type=" " name ="decorate" ></td>
+				</tr>
+				
+				<tr>
+					<td><label for="name">Finish </label></td>
+					<td> <input type="text" name ="finish" ></td>
+				</tr>
+				
+				<tr>
+					<td><label for= "name">Ready to Collect </label></td>
+					<td> <input type="text" name ="ready_to_collect" </td>
+				</tr>
+							
+			
+		</table>
+		</div>
+	
+  </body>
+
+</html>
