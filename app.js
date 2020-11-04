@@ -902,7 +902,7 @@ const checkBalance = async (message, response) => {
 }
 
 
-const showMenu = (message, response) => {
+const showMenu = async (message, response) => {
 
 const userRef = db.collection('customers');   
 const snapshot = await userRef.where('viberid', '==', currentUser.id).limit(1).get();
