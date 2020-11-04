@@ -89,16 +89,14 @@ app.post('/customerinfo',function(req,res){
     
     currentUser.name = req.body.name;
     currentUser.phone = req.body.phone;
-    currentUser.address = req.body.address;
-    currentUser.design = req.body.design;
-    currentUser.specialinstruction = req.body.specialinstruction;
+ 
+ 
 
     let data = {
         viberid: currentUser.id,
         name: currentUser.name,
         phone: currentUser.phone,
-        design: currentUser.design,
-        specialinstruction: currentUser.specialinstruction
+   
     }
 
    
@@ -791,28 +789,14 @@ const registerUser = async (message, response) => {
                     "BgMedia": "http://www.url.by/test.gif",
                     "BgLoop": true,
                     "ActionType": "reply",
-                    "ActionBody": "my-stock",               
-                    "Text": "My Stock",
+                    "ActionBody": "measurement",               
+                    "Text": "Measurement",
                     "TextVAlign": "middle",
                     "TextHAlign": "center",
                     "TextOpacity": 60,
                     "TextSize": "regular"
                 },
-                {
-                    "Columns": 6,
-                    "Rows": 1,
-                    "BgColor": "#2db9b9",
-                    "BgMediaType": "gif",
-                    "BgMedia": "http://www.url.by/test.gif",
-                    "BgLoop": true,
-                    "ActionType": "reply",
-                    "ActionBody": "my-balance",               
-                    "Text": "My Balance",
-                    "TextVAlign": "middle",
-                    "TextHAlign": "center",
-                    "TextOpacity": 60,
-                    "TextSize": "regular"
-                },            
+                    
             ]
         };
 
