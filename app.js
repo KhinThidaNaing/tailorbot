@@ -44,6 +44,22 @@ let actionKeyboard = {
                 "TextOpacity": 60,
                 "TextSize": "regular"
             },
+
+            {
+                "Columns": 6,
+                "Rows": 1,
+                "BgColor": "#2db9b9",
+                "BgMediaType": "gif",
+                "BgMedia": "http://www.url.by/test.gif",
+                "BgLoop": true,
+                "ActionType": "reply",
+                "ActionBody": "make-order",               
+                "Text": "Order",
+                "TextVAlign": "middle",
+                "TextHAlign": "center",
+                "TextOpacity": 60,
+                "TextSize": "regular"
+            },
                  
         ]
     };
@@ -218,6 +234,57 @@ console.log('MEASUREMENT', data);
     });
        
 });
+
+
+app.get('/order',function(req,res){   
+      let data = {
+        name: currentUser.name,
+      } 
+     res.render('order.ejs', {data:data});
+});
+
+
+app.post('/order',function(req,res){   
+    
+   
+    let data = {
+        viberid: currentUser.id,
+        name:currentUser.name,
+        comment:req.body.comment,
+        order_date:new Date()
+    }
+
+ 
+   
+
+    db.collection('measurements').add(data)
+    .then(()=>{
+            let data = {
+                   "receiver":currentUser.id,
+                   "min_api_version":1,
+                   "sender":{
+                      "name":"Viber Bot",
+                      "avatar":"http://avatar.example.com"
+                   },
+                   "tracking_data":"tracking data",
+                   "type":"text",
+                   "text": "Thank you!"+currentUser.name,
+                }                
+
+                fetch('https://chatapi.viber.com/pa/send_message', {
+                    method: 'post',
+                    body:    JSON.stringify(data),
+                    headers: { 'Content-Type': 'application/json', 'X-Viber-Auth-Token': process.env.AUTH_TOKEN },
+                })
+                .then(res => res.json())
+                .then(json => console.log('JSON', json))
+
+    }).catch((error)=>{
+        console.log('ERROR:', error);
+    });
+       
+});
+
 
 app.get('/custotmer', async (req,res) => {
     const usersRef = db.collection('customer');
@@ -624,6 +691,9 @@ bot.onTextMessage(/./, (message, response) => {
        case "measurement":
             showMeasurementForm(message, response);
             break;
+         case "make-order":
+            showOrderForm(message, response);
+            break;
         case "my-stock":
             checkStock(message, response);
             break;
@@ -784,28 +854,7 @@ const registerUser = async (message, response) => {
              currentUser.phone = doc.data().phone;           
         });
         
-          let actionKeyboard = {
-            "Type": "keyboard",
-            "Revision": 1,
-            "Buttons": [
-                {
-                    "Columns": 6,
-                    "Rows": 1,
-                    "BgColor": "#2db9b9",
-                    "BgMediaType": "gif",
-                    "BgMedia": "http://www.url.by/test.gif",
-                    "BgLoop": true,
-                    "ActionType": "reply",
-                    "ActionBody": "measurement",               
-                    "Text": "Measurement",
-                    "TextVAlign": "middle",
-                    "TextHAlign": "center",
-                    "TextOpacity": 60,
-                    "TextSize": "regular"
-                },
-                    
-            ]
-        };
+
 
           let bot_message3 = new TextMessage(`You are already registered`, actionKeyboard);    
           response.send(bot_message3);
@@ -822,6 +871,14 @@ const   showMeasurementForm = async (message, response) => {
         });
 }
 
+const   showOrderForm = async (message, response) => {
+
+     let bot_message1 = new TextMessage(`Click on following link to fill your order`, ); 
+        let bot_message2 = new UrlMessage(APP_URL + '/order/');   
+        response.send(bot_message1).then(()=>{
+            return response.send(bot_message2);
+        });
+}
 
 
 const checkBalance = async (message, response) => {
