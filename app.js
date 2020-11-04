@@ -179,7 +179,7 @@ app.post('/measurement',function(req,res){
         name:currentUser.name,
         bicep: currentUser.bicep,
         bust: currentUser.bust,
-        central_back: currentUser.design,
+        central_back: currentUser.central_back,
         hip: currentUser.hip,
         shoulder:currentUser.shoulder,
         sleeve:currentUser.sleeve,
@@ -188,6 +188,7 @@ app.post('/measurement',function(req,res){
         comment:currentUser.comment
     }
 
+console.log('MEASUREMENT', data);
    
 
     db.collection('measurements').add(data)
