@@ -37,28 +37,14 @@ let actionKeyboard = {
                 "BgMedia": "http://www.url.by/test.gif",
                 "BgLoop": true,
                 "ActionType": "reply",
-                "ActionBody": "reply",               
-                "Text": "My Stock",
+                "ActionBody": "measurement",               
+                "Text": "Measurement",
                 "TextVAlign": "middle",
                 "TextHAlign": "center",
                 "TextOpacity": 60,
                 "TextSize": "regular"
             },
-            {
-                "Columns": 6,
-                "Rows": 1,
-                "BgColor": "#2db9b9",
-                "BgMediaType": "gif",
-                "BgMedia": "http://www.url.by/test.gif",
-                "BgLoop": true,
-                "ActionType": "reply",
-                "ActionBody": "my-balance",               
-                "Text": "My Balance",
-                "TextVAlign": "middle",
-                "TextHAlign": "center",
-                "TextOpacity": 60,
-                "TextSize": "regular"
-            },            
+                 
         ]
     };
 
@@ -635,6 +621,9 @@ bot.onTextMessage(/./, (message, response) => {
         case "register":
             registerUser(message, response);
             break;
+       case "measurement":
+            showMeasurementForm(message, response);
+            break;
         case "my-stock":
             checkStock(message, response);
             break;
@@ -778,7 +767,7 @@ const keyboardReply = (message, response) => {
 
 const registerUser = async (message, response) => {   
 
-    const userRef = db.collection('users');    
+    const userRef = db.collection('customer');    
     const snapshot = await userRef.where('viberid', '==', currentUser.id).limit(1).get();
 
     if (snapshot.empty) {
@@ -833,51 +822,13 @@ const registerUser = async (message, response) => {
   
 }
 
-const measurement = async (message, response) => {
+const   showMeasurementForm = async (message, response) => {
 
-    let user_id = '';
-
-    const userRef = db.collection('users');    
-    const snapshot = await userRef.where('viberid', '==', currentUser.id).limit(1).get();
-
-    if (snapshot.empty) {
-        console.log('No such document!');
-        let bot_message1 = new TextMessage(`Click on following link to fill your measurement`, ); 
+     let bot_message1 = new TextMessage(`Click on following link to fill your measurement`, ); 
         let bot_message2 = new UrlMessage(APP_URL + '/measurement/');   
         response.send(bot_message1).then(()=>{
             return response.send(bot_message2);
         });
-    }else{
-        snapshot.forEach(doc => {
-            user_id = doc.id;         
-        });
-     }
-
-    const stocksRef = db.collection('users').doc(user_id).collection('stocks').where("qty", ">", 0);
-    const snapshot2 = await stocksRef.get();
-    if (snapshot2.empty) {
-        let bot_message = new TextMessage(`You have no stock`);    
-        response.send(bot_message);
-    }  
-
- 
-    let stock_message = '';
-    snapshot2.forEach(doc => {
-  
-        
-        batch = doc.data().batch;
-        type = doc.data().type;
-        qty = doc.data().qty;        
-        received_date = doc.data().received_date;    
-
-        stock_message += `Your batch ${batch} of type ${type} has ${qty} in stock\n`;   
-        
-               
-    }); 
-
-    let bot_message = new TextMessage(`${stock_message}`);    
-        response.send(bot_message); 
-    
 }
 
 
