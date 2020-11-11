@@ -19,6 +19,7 @@
     <th>Comment</th>
     <th>Date</th> 
     <th>Status</th> 
+    <th>Action</th>
     
   </tr>
 
@@ -30,6 +31,8 @@
        <td><%= order.comment %></td>
        <td><%= order.order_date %></td>
       <td><%= order.status %></td>
+       <td> <a href="../admin/orderdetail/<%= order.id %>">view</a>
+      </td>
      
       
      </tr>
