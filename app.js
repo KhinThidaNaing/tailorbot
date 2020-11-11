@@ -369,7 +369,23 @@ app.get('/admin/orders', async (req,res) => {
 
 app.get('/admin/orderdetails/:doc_id', async (req,res) => {
     let doc_id = req.params.doc_id;
-    
+    let orderRef = db.collection('orders').doc(doc_id);
+    let order = await orderRef.get();
+    let data = {}
+    if (!order.exists) {
+          console.log('No order!');        
+        } else {      
+          data.doc_id = order.id; 
+          data.name = order.data().name;
+          data.viberid = order.data().viberid;
+          
+          let d = new Date(doc.data().order_date._seconds);
+          d = d.toString();
+          data.order_date = d;
+          
+        }
+res.render('orderdetails.ejs', {data:data});
+
     
 });
 
