@@ -353,7 +353,7 @@ app.get('/admin/orders', async (req,res) => {
         order.comment = doc.data().comment;         
         order.order_date = doc.data().order_date;
         order.viberid = doc.data().viberid;
-        data.push(user);        
+        data.push(order);        
     });   
  
     res.render('orderlist.ejs', {data:data}); 
