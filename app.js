@@ -337,6 +337,29 @@ app.get('/designtype',function(req,res){
 
 
 
+app.get('/admin/orders', async (req,res) => {
+    const ordersRef = db.collection('orders');
+    const snapshot = await ordersRef.get();
+    if (snapshot.empty) {
+      res.send('No matching documents.');
+    
+    }  
+    let data = [];
+    snapshot.forEach(doc => {
+
+        let order = {};
+        order.id = doc.id;
+        order.name = doc.data().name;
+        order.comment = doc.data().comment;         
+        order.order_date = doc.data().order_date;
+        order.viberid = doc.data().viberid;
+        data.push(user);        
+    });   
+ 
+    res.render('orderlist.ejs', {data:data}); 
+    
+});
+
 
 app.get('/admin/addstock/:merchant_id', async (req,res) => {  
     let data = { };        
