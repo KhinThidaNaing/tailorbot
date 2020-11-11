@@ -348,12 +348,9 @@ app.get('/admin/orders', async (req,res) => {
     snapshot.forEach(doc => {
 
         let order = {};
+        order=doc.data();
         order.id = doc.id;
-        order.name = doc.data().name;
-        order.comment = doc.data().comment;         
-        order.order_date = doc.data().order_date;
-        order.viberid = doc.data().viberid;
-
+        
         let d = new Date(doc.data().order_date._seconds);
         d = d.toString();
        order.order_date = d;
