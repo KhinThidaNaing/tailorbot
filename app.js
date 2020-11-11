@@ -367,6 +367,13 @@ app.get('/admin/orders', async (req,res) => {
 });
 
 
+app.get('/admin/orderdetails/:doc_id', async (req,res) => {
+    let doc_id = req.params.doc_id;
+    
+    
+});
+
+
 app.get('/admin/addstock/:merchant_id', async (req,res) => {  
     let data = { };        
 
