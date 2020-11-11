@@ -60,6 +60,22 @@ let actionKeyboard = {
                 "TextOpacity": 60,
                 "TextSize": "regular"
             },
+
+              {
+                "Columns": 6,
+                "Rows": 1,
+                "BgColor": "#2db9b9",
+                "BgMediaType": "gif",
+                "BgMedia": "http://www.url.by/test.gif",
+                "BgLoop": true,
+                "ActionType": "reply",
+                "ActionBody": "design-catalogue",               
+                "Text": "Order",
+                "TextVAlign": "middle",
+                "TextHAlign": "center",
+                "TextOpacity": 60,
+                "TextSize": "regular"
+            },
                  
         ]
     };
@@ -701,7 +717,7 @@ bot.onTextMessage(/./, (message, response) => {
         case "make-order":
             showOrderForm(message, response);
             break;
-        case "design-catalouge":
+        case "design-catalogue":
             checkStock(message, response);
             break;
         case "my-stock":
