@@ -44,6 +44,32 @@
 	</table>
 
  
+ <form action="https://tailorvbbot.herokuapp.com/admin/orderdetails/" method="post">
+  
+  <label for="status">Status:</label>
+  <select name="status" id="status">    
+    <option value="pending"
+    <%if(data.status == "pending"){%>
+        <%="selected"%>
+    <%}%>
+    >Pending</option>
+    <option value="confirm"
+    <%if(data.status == "confirm"){%>
+        <%="selected"%>
+    <%}%>
+    >Confirm</option>
+   
+  </select> 
+  
+  <label for="name">Comment</label>
+    <textarea name="comment" rows="4" cols="50"></textarea> 
+  
+  <input type="hidden"  name="doc_id" value="<%= data.doc_id %>">
+
+    <input type="submit" value="Submit"> 
+  
+  
+  </form>
  
 
   </body>
