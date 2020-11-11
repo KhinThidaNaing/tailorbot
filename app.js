@@ -320,7 +320,6 @@ app.get('/designtype',function(req,res){
 
 
 
-
 app.post('/designtype',function(req,res){   
     
     currentUser.name = req.body.name;
@@ -919,7 +918,7 @@ const   showOrderForm = async (message, response) => {
 const   showDesignType = async (message, response) => {
 
      let bot_message1 = new TextMessage(`Click on following link to find your design`, ); 
-        let bot_message2 = new UrlMessage(APP_URL + '/desgntype/');   
+        let bot_message2 = new UrlMessage(APP_URL + '/designtype/');   
         response.send(bot_message1).then(()=>{
             return response.send(bot_message2);
         });
