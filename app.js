@@ -70,7 +70,7 @@ let actionKeyboard = {
                 "BgLoop": true,
                 "ActionType": "reply",
                 "ActionBody": "design-catalogue",               
-                "Text": "Order",
+                "Text": "View Catalogue",
                 "TextVAlign": "middle",
                 "TextHAlign": "center",
                 "TextOpacity": 60,
