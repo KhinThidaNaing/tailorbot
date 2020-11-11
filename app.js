@@ -390,6 +390,25 @@ res.render('orderdetails.ejs', {data:data});
 });
 
 
+app.post('/admin/updateorder', function(req,res){
+  console.log('REQ:', req.body); 
+
+  
+
+  let data = {
+    
+    status:req.body.status,
+    comment:req.body.comment
+  }
+
+  db.collection('orders').doc(req.body.doc_id)
+  .update(data).then(()=>{
+      res.redirect('/admin/orders');
+  }).catch((err)=>console.log('ERROR:', error)); 
+ 
+});
+
+
 app.get('/admin/addstock/:merchant_id', async (req,res) => {  
     let data = { };        
 

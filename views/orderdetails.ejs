@@ -44,7 +44,7 @@
 	</table>
 
  
- <form action="https://tailorvbbot.herokuapp.com/admin/orderdetails/" method="post">
+ <form action="https://tailorvbbot.herokuapp.com/admin/updateorder/" method="post">
   
   <label for="status">Status:</label>
   <select name="status" id="status">    
@@ -60,11 +60,11 @@
     >Confirm</option>
    
   </select> 
-  
+  <br>
   <label for="name">Comment</label>
     <textarea name="comment" rows="4" cols="50"></textarea> 
   
-  <input type="hidden"  name="doc_id" value="<%= data.doc_id %>">
+  <input type="hidden"  name="doc_id" value="<%= data.doc_id %>"> <br>
 
     <input type="submit" value="Submit"> 
   
