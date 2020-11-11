@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Order List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ </head>
+
+  <body>
+  <h1>Order List</h1>
+
+ 
+  
+  <table cellspacing="1" cellpadding="5" border="1">
+    <tr>
+    
+    <th>viberid</th>
+    <th>Name</th>
+    <th>Comment</th>
+    <th>Date</th>   
+    
+  </tr>
+
+  <% data.forEach(function(order){ %>
+     <tr>
+
+      <td><%= order.viberid %></td>
+       <td><%= order.name %></td>
+       <td><%= order.comment %></td>
+       <td><%= order.date %></td>
+     
+      
+     </tr>
+  <% }); %>
+
+
+  
+
+	</table>
+
+ 
+ 
+
+  </body>
+
+</html>
