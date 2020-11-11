@@ -379,7 +379,7 @@ app.get('/admin/orderdetails/:doc_id', async (req,res) => {
           data.name = order.data().name;
           data.viberid = order.data().viberid;
           
-          let d = new Date(doc.data().order_date._seconds);
+          let d = new Date(order.data().order_date._seconds);
           d = d.toString();
           data.order_date = d;
           
