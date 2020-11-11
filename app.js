@@ -718,7 +718,7 @@ bot.onTextMessage(/./, (message, response) => {
             showOrderForm(message, response);
             break;
         case "design-catalogue":
-            checkStock(message, response);
+            showDesignType(message, response);
             break;
         case "my-stock":
             checkStock(message, response);
