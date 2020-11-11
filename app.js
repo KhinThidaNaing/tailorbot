@@ -814,7 +814,7 @@ const richMediaReply = (message, response) => {
             "TextSize":"large",
             "TextVAlign":"middle",
             "TextHAlign":"middle",
-        }
+        },
 
          {
             "Columns":6,
