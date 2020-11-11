@@ -320,20 +320,6 @@ app.get('/designtype',function(req,res){
 
 
 
-app.post('/designtype',function(req,res){   
-    
-    currentUser.name = req.body.name;
-    currentUser.phone = req.body.phone;
- 
- 
-
-    let data = {
-        viberid: currentUser.id,
-        name: currentUser.name,
-        phone: currentUser.phone,
-   
-    }
-
 
 
 app.get('/admin/addstock/:merchant_id', async (req,res) => {  
