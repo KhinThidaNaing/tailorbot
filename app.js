@@ -97,9 +97,6 @@ app.get('/customerinfo',function(req,res){
 
 
 
- 
-
-
 
 app.post('/customerinfo',function(req,res){   
     
@@ -313,6 +310,31 @@ app.get('/custotmer', async (req,res) => {
     res.render('measurement.ejs', {data:data}); 
     
 });
+
+app.get('/designtype',function(req,res){   
+      let data = {
+        user_name: currentUser.name,
+      } 
+     res.render('designtype.ejs', {data:data});
+});
+
+
+
+
+app.post('/designtype',function(req,res){   
+    
+    currentUser.name = req.body.name;
+    currentUser.phone = req.body.phone;
+ 
+ 
+
+    let data = {
+        viberid: currentUser.id,
+        name: currentUser.name,
+        phone: currentUser.phone,
+   
+    }
+
 
 
 app.get('/admin/addstock/:merchant_id', async (req,res) => {  
