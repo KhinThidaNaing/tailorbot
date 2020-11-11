@@ -688,13 +688,16 @@ bot.onTextMessage(/./, (message, response) => {
         case "register":
             registerUser(message, response);
             break;
-       case "measurement":
+        case "measurement":
             showMeasurementForm(message, response);
             break;
-         case "make-order":
+        case "make-order":
             showOrderForm(message, response);
             break;
         case "my-stock":
+            checkStock(message, response);
+            break;
+        case "design-catalouge":
             checkStock(message, response);
             break;
         case "my-balance":
@@ -781,6 +784,17 @@ const richMediaReply = (message, response) => {
                 "TextHAlign":"left"
         },
         {
+            "Columns":6,
+            "Rows":1,
+            "ActionType":"reply",
+            "ActionBody": "click",
+            "Text":"Click",
+            "TextSize":"large",
+            "TextVAlign":"middle",
+            "TextHAlign":"middle",
+        }
+
+         {
             "Columns":6,
             "Rows":1,
             "ActionType":"reply",
@@ -879,6 +893,16 @@ const   showOrderForm = async (message, response) => {
             return response.send(bot_message2);
         });
 }
+
+const   showDesignType = async (message, response) => {
+
+     let bot_message1 = new TextMessage(`Click on following link to find your design`, ); 
+        let bot_message2 = new UrlMessage(APP_URL + '/desgntype/');   
+        response.send(bot_message1).then(()=>{
+            return response.send(bot_message2);
+        });
+}
+
 
 
 const checkBalance = async (message, response) => {
