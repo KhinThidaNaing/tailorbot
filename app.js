@@ -715,12 +715,13 @@ bot.onTextMessage(/./, (message, response) => {
         case "make-order":
             showOrderForm(message, response);
             break;
-        case "my-stock":
-            checkStock(message, response);
-            break;
         case "design-catalouge":
             checkStock(message, response);
             break;
+        case "my-stock":
+            checkStock(message, response);
+            break;
+        
         case "my-balance":
             checkBalance(message, response);
             break;
