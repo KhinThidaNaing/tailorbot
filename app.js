@@ -371,10 +371,11 @@ app.get('/admin/orderdetails/:doc_id', async (req,res) => {
     let data = {}
     if (!order.exists) {
           console.log('No order!');        
-        } else {      
+        } else { 
+
+            data= order.data();   
           data.doc_id = order.id; 
-          data.name = order.data().name;
-          data.viberid = order.data().viberid;
+         
           
           let d = new Date(order.data().order_date._seconds);
           d = d.toString();
