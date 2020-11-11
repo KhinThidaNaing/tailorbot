@@ -19,24 +19,24 @@
     <th>Comment</th>
     <th>Date</th> 
     <th>Status</th> 
-    <th>Action</th>
+    
     
   </tr>
 
-  <% data.forEach(function(order){ %>
+ 
      <tr>
 
-      <td><%= order.viberid %></td>
-       <td><%= order.name %></td>
-       <td><%= order.comment %></td>
-       <td><%= order.order_date %></td>
-      <td><%= order.status %></td>
-       <td> <a href="https://tailorvbbot.herokuapp.com/admin/orderdetails/<%= order.id %>">view</a>
+      <td><%= data.viberid %></td>
+       <td><%= data.name %></td>
+       <td><%= data.comment %></td>
+       <td><%= data.order_date %></td>
+      <td><%= data.status %></td>
+       
       </td>
      
       
      </tr>
-  <% }); %>
+   
 
 
   
