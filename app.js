@@ -900,7 +900,8 @@ bot.onTextMessage(/^track my order$/i, async (message, response) => {
         status = doc.data().status; 
         image = doc.data().image;       
       });
-
+        console.log('TRACK IMAGE', image);
+        
       let bot_message = new TextMessage(`Your order is ${status}. ${comment}`, actionKeyboard);    
       response.send(bot_message);
       if(image){
