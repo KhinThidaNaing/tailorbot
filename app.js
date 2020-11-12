@@ -839,7 +839,7 @@ bot.onTextMessage(/^mingalarbar$/i, (message, response) =>
 
 
 
-bot.onTextMessage(/^track my order$/i, (message, response) => {
+bot.onTextMessage(/^track my order$/i, async (message, response) => {
     
     
     const ordersRef = db.collection('orders').where("viberid", "==", currentUser.id).limit(1);
