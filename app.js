@@ -80,6 +80,22 @@ let actionKeyboard = {
                 "TextOpacity": 60,
                 "TextSize": "regular"
             },
+
+            {
+                "Columns": 6,
+                "Rows": 1,
+                "BgColor": "#2db9b9",
+                "BgMediaType": "gif",
+                "BgMedia": "http://www.url.by/test.gif",
+                "BgLoop": true,
+                "ActionType": "reply",
+                "ActionBody": "track my order",               
+                "Text": "Track Order",
+                "TextVAlign": "middle",
+                "TextHAlign": "center",
+                "TextOpacity": 60,
+                "TextSize": "regular"
+            },
                  
         ]
     };
@@ -821,6 +837,32 @@ bot.onTextMessage(/^mingalarbar$/i, (message, response) =>
     response.send(new TextMessage(`Mingalarbar. Welcome to MCC`)));
  */
 
+
+
+bot.onTextMessage(/^track my order$/i, (message, response) => {
+    
+    
+    const ordersRef = db.collection('orders').where("viberid", "==", currentUser.id).limit(1);
+    const snapshot = await ordersRef.get();
+    
+
+    if (snapshot.empty) {
+        res.send('no data');
+    }else{
+      let data = []; 
+
+      let comment = '';
+      let status = '';
+      snapshot.forEach(doc => {         
+        comment = doc.data().comment;
+        status = doc.data().status;        
+      });
+
+      let bot_message = new TextMessage(`Your order is ${status}. ${comment}`, actionKeyboard);    
+      response.send(bot_message);
+
+    }
+});
 
 
 bot.onTextMessage(/./, (message, response) => {
