@@ -906,7 +906,10 @@ bot.onTextMessage(/^track my order$/i, async (message, response) => {
       response.send(bot_message);
       if(image){
         let bot_message = new PictureMessage(image, actionKeyboard);
-        response.send(bot_message)      
+       response.send(bot_message).catch(error=>{
+        console.error('ERROR', error);
+        process.exit(1);
+    });    
     }
 
     }
