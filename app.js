@@ -20,6 +20,7 @@ const APP_URL = process.env.APP_URL;
 
 
 const app = express(); 
+const uuidv4 = uuid();
 
 app.use('/css', express.static('css'));
 app.set('trust proxy', 1);
