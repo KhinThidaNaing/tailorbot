@@ -498,13 +498,14 @@ app.post('/admin/updateorder', upload.single('image'), function(req,res){
     status:req.body.status,
     comment:req.body.comment
   }
-  
+ console.log('INSIDE UPDATEORDER', data); 
   
   let file = req.file;
   
   if (file) {
       uploadImageToStorage(file).then((img_url) => {
         data.image = img_url;
+        console.log('FILE URL', data.image);
         db.collection('orders').doc(req.body.doc_id)
           .update(data).then(()=>{
               res.redirect('/admin/orders');
