@@ -14,6 +14,7 @@ const TextMessage = require('viber-bot').Message.Text;
 const RichMediaMessage = require('viber-bot').Message.RichMedia;
 const KeyboardMessage = require('viber-bot').Message.Keyboard;
 const PictureMessage = require('viber-bot').Message.Picture;
+const session = require('express-session');
 
 const APP_URL = process.env.APP_URL;
 
@@ -21,6 +22,9 @@ const APP_URL = process.env.APP_URL;
 const app = express(); 
 
 app.use('/css', express.static('css'));
+app.set('trust proxy', 1);
+app.use(session({secret: 'effystonem'}));
+let sess;
 
 let currentUser = {};
 
@@ -101,6 +105,41 @@ app.set('views', __dirname+'/views');
 
 app.get('/',function(req,res){    
     res.send('your app is up and running');
+});
+
+
+
+app.get('/login',function(req,res){    
+    sess = req.session;
+
+    if(sess.login){
+       res.send('You are already login. <a href="logout">logout</a>');
+    }else{
+      res.render('login.ejs');
+    } 
+    
+});
+
+
+app.get('/logout',function(req,res){ 
+    //sess = req.session;   
+    req.session.destroy(null);  
+    res.redirect('login');
+});
+
+app.post('/login',function(req,res){    
+    sess = req.session;
+
+    let username = req.body.username;
+    let password = req.body.password;
+
+    if(username == 'admin' && password == process.env.ADMIN_PW){
+      sess.username = 'admin';
+      sess.login = true;
+      res.redirect('/admin/orders');
+    }else{
+      res.send('login failed');
+    }   
 });
 
 
@@ -338,7 +377,12 @@ app.get('/designtype',function(req,res){
 
 
 app.get('/admin/orders', async (req,res) => {
-    const ordersRef = db.collection('orders');
+
+     sess = req.session;
+    console.log('SESS:', sess); 
+    if(sess.login){
+        
+        const ordersRef = db.collection('orders');
     const snapshot = await ordersRef.get();
     if (snapshot.empty) {
       res.send('No matching documents.');
@@ -360,12 +404,23 @@ app.get('/admin/orders', async (req,res) => {
     });   
  
     res.render('orderlist.ejs', {data:data}); 
+    }else{
+      res.send('you are not authorized to view this page');
+    }  
+
+
+    
     
 });
 
 
 app.get('/admin/orderdetails/:doc_id', async (req,res) => {
-    let doc_id = req.params.doc_id;
+
+     sess = req.session;
+    console.log('SESS:', sess); 
+    if(sess.login){
+        
+        let doc_id = req.params.doc_id;
     let orderRef = db.collection('orders').doc(doc_id);
     let order = await orderRef.get();
     let data = {}
@@ -384,6 +439,11 @@ app.get('/admin/orderdetails/:doc_id', async (req,res) => {
         }
 res.render('orderdetails.ejs', {data:data});
 
+    }else{
+      res.send('you are not authorized to view this page');
+    }   
+
+    
     
 });
 
