@@ -901,7 +901,7 @@ bot.onTextMessage(/^track my order$/i, async (message, response) => {
         image = doc.data().image;       
       });
         console.log('TRACK IMAGE', image);
-        
+
       let bot_message = new TextMessage(`Your order is ${status}. ${comment}`, actionKeyboard);    
       response.send(bot_message);
       if(image){
@@ -1000,7 +1000,7 @@ const urlReply = (message, response) => {
 }
 
 const pictureReply = (message, response) => {
-    const bot_message = new PictureMessage('https://upload.wikimedia.org/wikipedia/en/6/69/Effy_Stonem.jpg');
+    const bot_message = new PictureMessage('https://firebasestorage.googleapis.com/v0/b/tailorbot-925d1.appspot.com/o/1605174458458_2 tree.jpg?alt=media&token=a5860198-9f4d-435c-a295-59c484037fcc');
 
     response.send(bot_message).catch(error=>{
         console.error('ERROR', error);
