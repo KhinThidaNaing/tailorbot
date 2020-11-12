@@ -427,7 +427,7 @@ app.get('/admin/orders', async (req,res) => {
 
         data.push(order);        
     });   
- 
+    console.log('INSIDE ADMIN ORDER', data);
     res.render('orderlist.ejs', {data:data}); 
     }else{
       res.send('you are not authorized to view this page');
