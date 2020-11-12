@@ -422,7 +422,7 @@ app.get('/admin/orders', async (req,res) => {
         
         console.log('DATETIME INSIDE ADMIN ORDER',);
         
-       order.order_date = doc.data().order_date.toDate();
+       order.order_date = doc.data().order_date.toDate().toDateString();
 
 
         data.push(order);        
