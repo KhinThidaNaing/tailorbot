@@ -44,7 +44,7 @@
 	</table>
 
  
- <form action="https://tailorvbbot.herokuapp.com/admin/updateorder/" method="post">
+ <form id="form" action="https://tailorvbbot.herokuapp.com/admin/updateorder/" method="post">
   
   <label for="status">Status:</label>
   <select name="status" id="status">    
@@ -79,7 +79,19 @@
   
   </form>
  
+<script>      
+   
+      const windowShut = () => {
 
+        setTimeout(()=>{
+          window.close();
+      },2000);  
+        
+        }      
+      document.getElementById("form").addEventListener("submit", windowShut);   
+     
+
+  </script>
   </body>
 
 </html>
