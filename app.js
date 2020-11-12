@@ -420,10 +420,9 @@ app.get('/admin/orders', async (req,res) => {
         order=doc.data();
         order.id = doc.id;
         
-        console.log('DATETIME INSIDE ADMIN ORDER', doc.data().order_date.toDate());
-        let d = new Date(doc.data().order_date._seconds);
-        d = d.toString();
-       order.order_date = d;
+        console.log('DATETIME INSIDE ADMIN ORDER',);
+        
+       order.order_date = doc.data().order_date.toDate();
 
 
         data.push(order);        
