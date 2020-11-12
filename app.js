@@ -463,7 +463,7 @@ res.render('orderdetails.ejs', {data:data});
     
 });
 
-
+/*
 app.post('/admin/updateorder', function(req,res){
   console.log('REQ:', req.body); 
 
@@ -481,6 +481,36 @@ app.post('/admin/updateorder', function(req,res){
   }).catch((err)=>console.log('ERROR:', error)); 
  
 });
+*/
+
+app.post('/admin/updateorder', upload.single('image'), function(req,res){
+    
+
+  let data = {    
+    status:req.body.status,
+    comment:req.body.comment
+  }
+  
+  
+  let file = req.file;
+  
+  if (file) {
+      uploadImageToStorage(file).then((img_url) => {
+        data.image = img_url;
+        db.collection('orders').doc(req.body.doc_id)
+          .update(data).then(()=>{
+              res.redirect('/admin/orders');
+          }).catch((err)=>console.log('ERROR:', error)); 
+           
+      }).catch((error) => {
+        console.error(error);
+      });
+    }     
+
+
+ 
+});
+
 
 
 app.get('/admin/addstock/:merchant_id', async (req,res) => {  
