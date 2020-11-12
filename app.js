@@ -1244,6 +1244,42 @@ if (snapshot.empty) {
 }
 
 
+const uploadImageToStorage = (file) => {
+  return new Promise((resolve, reject) => {
+    if (!file) {
+      reject('No image file');
+    }
+    let newFileName = `${Date.now()}_${file.originalname}`;
+
+    let fileUpload = bucket.file(newFileName);
+
+    const blobStream = fileUpload.createWriteStream({
+      metadata: {
+        contentType: file.mimetype,
+         metadata: {
+            firebaseStorageDownloadTokens: uuidv4
+          }
+      }
+    });
+
+    blobStream.on('error', (error) => {
+      console.log('BLOB:', error);
+      reject('Something is wrong! Unable to upload at the moment.');
+    });
+
+    blobStream.on('finish', () => {
+      // The public URL can be used to directly access the file via HTTP.
+      //const url = format(`https://storage.googleapis.com/${bucket.name}/${fileUpload.name}`);
+      const url = format(`https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${fileUpload.name}?alt=media&token=${uuidv4}`);
+      console.log("image url:", url);
+      resolve(url);
+    });
+
+    blobStream.end(file.buffer);
+  });
+}
+
+
 function defaultReply(message, response){
     response.send(new TextMessage(`I don't quite understand your command`)).then(()=>{
                 return response.send(new TextMessage(`Another line of text`)).then(()=>{
