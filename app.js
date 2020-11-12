@@ -902,18 +902,15 @@ bot.onTextMessage(/^track my order$/i, async (message, response) => {
       });
         console.log('TRACK IMAGE', image);
 
-      //let bot_message = new TextMessage(`Your order is ${status}. ${comment}`, actionKeyboard);    
-     // response.send(bot_message);
+      let bot_message = new TextMessage(`Your order is ${status}. ${comment}`, actionKeyboard);    
+      response.send(bot_message);
 
-     let bot_message1 = new TextMessage(`Your order is ${status}. ${comment}`);   
-    let bot_message2 = new PictureMessage(image);
-    
-    response.send(bot_message1).then(()=>{
-        response.send(bot_message2);
-    }).catch(error=>{
-        console.error('ERROR', error);
-        process.exit(1);
-    });
+      if(image){
+        let bot_message = new PictureMessage(image);
+        response.send(bot_message);
+    }
+
+
     
 
     }
