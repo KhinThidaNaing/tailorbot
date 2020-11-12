@@ -905,8 +905,8 @@ bot.onTextMessage(/^track my order$/i, async (message, response) => {
       //let bot_message = new TextMessage(`Your order is ${status}. ${comment}`, actionKeyboard);    
      // response.send(bot_message);
 
-     let bot_message1 = new TextMessage(`Your order is ${status}. ${comment}`, actionKeyboard);   
-    let bot_message2 = new PictureMessage(image, actionKeyboard);
+     let bot_message1 = new TextMessage(`Your order is ${status}. ${comment}`);   
+    let bot_message2 = new PictureMessage(image);
     
     response.send(bot_message1).then(()=>{
         response.send(bot_message2);
