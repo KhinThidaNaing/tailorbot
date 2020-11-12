@@ -894,13 +894,19 @@ bot.onTextMessage(/^track my order$/i, async (message, response) => {
 
       let comment = '';
       let status = '';
+      let image = '';
       snapshot.forEach(doc => {         
         comment = doc.data().comment;
-        status = doc.data().status;        
+        status = doc.data().status; 
+        image = doc.data().image;       
       });
 
       let bot_message = new TextMessage(`Your order is ${status}. ${comment}`, actionKeyboard);    
       response.send(bot_message);
+      if(image){
+        let bot_message = new PictureMessage(image, actionKeyboard);
+        response.send(bot_message)      
+    }
 
     }
 });
