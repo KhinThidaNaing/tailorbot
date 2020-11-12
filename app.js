@@ -826,6 +826,7 @@ firebase.initializeApp({
 });
 
 let db = firebase.firestore(); 
+let bucket = firebase.storage().bucket();
 
 
 
