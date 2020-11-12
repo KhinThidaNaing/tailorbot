@@ -53,11 +53,16 @@
         <%="selected"%>
     <%}%>
     >Pending</option>
-    <option value="confirm"
-    <%if(data.status == "confirm"){%>
+    <option value="in progress"
+    <%if(data.status == "in progress"){%>
         <%="selected"%>
     <%}%>
-    >Confirm</option>
+    >In Progress</option>
+  <option value="ready to collect"
+    <%if(data.status == "ready to collect"){%>
+        <%="selected"%>
+    <%}%>
+    >Ready to Collect</option>
    
   </select> 
   <br>
