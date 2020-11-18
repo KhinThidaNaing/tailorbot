@@ -5,10 +5,12 @@
 }*/
 
 .login { background-color:#00ff00;
-font-size: 20px;
-color: 	#59a66c;
-margin-top: 100px;
-  margin-bottom: 100px;
-  margin-right: 150px;
-  margin-left: 80px;
+	font-size:18px;
+	color:#59a66c
+  	margin-top: 100px;
+	margin-bottom: 100px;
+	margin-right: 150px;
+	margin-left: 80px;
+	text-align: center;
+	line-height:30px;
 }
