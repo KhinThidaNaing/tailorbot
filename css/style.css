@@ -17,14 +17,16 @@
 
 
 .orderlist { 
-	background-color:#00ff00;
+	background-color: #FFE5B4;
+	font-family:Arial;
 	font-size:18px;
-	color:#59a66c;
+	color:#000000;
   	margin-top: 100px;
 	margin-bottom: 100px;
 	margin-right: 150px;
 	margin-left: 80px;
 	text-align: center;
 	line-height:50px;
+	font-family:Roboto;
 }
 
