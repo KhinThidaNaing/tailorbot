@@ -17,21 +17,5 @@
 }
 
 
- #info { 
-            background-color: #FFF5EE;
-            font-size:18px;
-            color:#000000;
-            margin-top: 100px;
-            margin-bottom: 100px;
-            margin-right: 400px;
-            margin-left: 80px;
-            text-align: center;
-            line-height:50px;
-            font-family:Roboto;
-            
-           }
-           
-           table, th, td {
-            border: 1px solid black;
-          }
+
 
